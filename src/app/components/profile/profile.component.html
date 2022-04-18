@@ -1,0 +1,70 @@
+
+<form action="" class="search-form">
+  <input type="text" class="form-control" placeholder="Search Github Username..." [(ngModel)]="username" name="username" (keyup)="findProfile()">
+</form>
+<div *ngIf="profile">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{profile.name}} <small>{{profile.login}}</small>
+      
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="person">
+        </div>
+        <div class="col-sm-5">
+          <ul class="list-group">
+            <li class="list-group-item" *ngIf="profile.email"> <a href="emailto:{{profile.email}}">{{profile.email}}</a></li>
+
+          </ul>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            <p>
+              <span class="label label-default">{{profile.followers}} Followers</span>
+
+              <span class="label label-default">{{profile.following}} Following</span>
+
+              <span class="label label-default">{{profile.public_repos}} Repos</span>
+
+
+            </p>
+
+            <p>
+              <a href="{{profile.html_url}}" class="btn btn-primary btn-md">View Profile</a>
+            </p>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Repositories</h3>
+              </div>
+              <div  class="panel-body" *ngFor="let repo of repos"> 
+                <p class="clearfix"></p>
+                <p>
+                  {{repo.name}} <a href="{{repo.html_url}}" target="_blank" class="btn btn-primary btn-md pull-right">View Project</a>
+                </p>
+                <p>
+                  {{repo.description}}
+                </p>
+
+              </div>
+
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- 
+  
+<p>
+                  {{repo.name}} <a href="{{repo.html_url}}" class="btn btn-primary btn-md">View Project</a>
+                </p>
+
+
+ -->
